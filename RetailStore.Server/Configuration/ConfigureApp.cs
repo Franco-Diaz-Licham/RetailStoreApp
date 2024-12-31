@@ -12,6 +12,9 @@ public static class ConfigureApp
         }
 
         app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseStaticFiles();
+        app.UseMiddleware<ExceptionMiddleware>();
         app.UseAuthorization();
         app.MapControllers();
         await app.ConfigureDatabase();

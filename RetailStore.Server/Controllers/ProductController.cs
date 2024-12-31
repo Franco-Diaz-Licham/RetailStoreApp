@@ -4,27 +4,34 @@ namespace RetailStore.Server.Controllers;
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly DataContext _db;
-    public ProductController(DataContext db)
+    private readonly IGenericRepository<ProductEntity> _repo;
+        private readonly IMapper _mapper;
+
+    public ProductController(IGenericRepository<ProductEntity> repo, IMapper mapper)
     {
-        _db = db;
+            _mapper = mapper;
+        _repo = repo;
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<ProductEntity>>> GetProducts()
+    public async Task<ActionResult<List<ProductEntity>>> GetProducts([FromQuery] ProductSpecificationParams productParams)
     {
-        var output = await _db.Products.ToListAsync();
+        var specs = new ProductsWithTypesAndBrandsSpecification(productParams);
+        var output = await _repo.GetAllAsync(specs);
 
-        if(output == null) return NotFound();
-        return Ok(output);
+        if (output == null) return NotFound();
+        return Ok(_mapper.Map<List<ProductDto>>(output));
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<ProductEntity>> GetProduct(int id)
+    public async Task<ActionResult<ProductDto>> GetProduct(int id)
     {
-        var output = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
-        
-        if(output == null) return NotFound();
+        // var product = await _repo.GetByIdAsync(id);
+        // var output = _mapper.Map<ProductDto>(product);
+        // if (output == null) return NotFound();
+
+        var output = await _repo.GetByIdAndMapAsync<ProductDto>(id);
+
         return Ok(output);
     }
 }

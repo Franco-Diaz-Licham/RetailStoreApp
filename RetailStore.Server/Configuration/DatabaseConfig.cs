@@ -13,7 +13,10 @@ public static class DatabaseConfig
             await db.Database.MigrateAsync();
 
             // seed data
-            await Seed.SeedProducts(db);
+            await Seed.ProductBrands(db);
+            await Seed.DeliveryMethods(db);
+            await Seed.ProductTypes(db);
+            await Seed.Products(db);
         }
         catch (Exception ex)
         {

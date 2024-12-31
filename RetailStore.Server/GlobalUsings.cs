@@ -7,6 +7,22 @@ global using RetailStore.Server.Data;
 global using RetailStore.Server.Helpers;
 global using System.ComponentModel.DataAnnotations.Schema;
 global using RetailStore.Server.Data.Seed;
-
+global using RetailStore.Server.Data.Repositories.ProductRepository;
+global using Microsoft.EntityFrameworkCore.Metadata.Builders;
+global using System.Text.Json;
+global using System.Reflection;
+global using RetailStore.Server.Data.Repositories.DeliveryMethodRepository;
+global using RetailStore.Server.Data.Repositories.ProductBrandRepository;
+global using RetailStore.Server.Data.Repositories.ProductTypeRepository;
+global using System.Linq.Expressions;
+global using RetailStore.Server.Models.Specifications;
+global using RetailStore.Server.Data.Repositories;
+global using System.ComponentModel.DataAnnotations;
+global using RetailStore.Server.Models.Dtos;
+global using AutoMapper;
+global using AutoMapper.QueryableExtensions;
+global using RetailStore.Server.Models.App;
+global using System.Net;
+global using RetailStore.Server.Middleware;
 
 
