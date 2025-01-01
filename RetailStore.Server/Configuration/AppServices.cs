@@ -4,7 +4,7 @@ public static class AppServices
 {
     public static IServiceCollection AddAppServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
         return services;
     }

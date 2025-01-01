@@ -33,12 +33,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return output;
     }
 
-    public async Task<U?> GetByIdAndMapAsync<U>(int id)
-    {
-        var output = await _db.Set<T>().Where(x => x.Id == id).ProjectTo<U>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
-        return output;
-    }
-
     public async Task<T?> GetEntityWithSpec(ISpecification<T> spec)
     {
         var output = await ApplySpecification(spec).FirstOrDefaultAsync();

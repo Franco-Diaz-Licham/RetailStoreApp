@@ -8,13 +8,19 @@ public static class ConfigureApp
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(opt =>
+            {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Retail Store API v1");
+            });
         }
 
+        app.UseMiddleware<ExceptionMiddleware>();
+
+        // for non-matching endpoints - ErrorsController
+        app.UseStatusCodePagesWithReExecute("/errors/{0}");
         app.UseHttpsRedirection();
         app.UseRouting();
         app.UseStaticFiles();
-        app.UseMiddleware<ExceptionMiddleware>();
         app.UseAuthorization();
         app.MapControllers();
         await app.ConfigureDatabase();

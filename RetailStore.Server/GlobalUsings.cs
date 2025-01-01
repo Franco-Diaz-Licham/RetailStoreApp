@@ -24,5 +24,7 @@ global using AutoMapper.QueryableExtensions;
 global using RetailStore.Server.Models.App;
 global using System.Net;
 global using RetailStore.Server.Middleware;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.OpenApi.Models;
 
 
