@@ -6,6 +6,7 @@ public class SpecificationEvaluator<TEntity> where TEntity : BaseEntity
     {
         var query = inputQuery;
 
+        // order of specs is important
         if (spec.Criteria != null) query = query.Where(spec.Criteria);
         if (spec.OrderBy != null) query = query.OrderBy(spec.OrderBy);
         if (spec.OrderByDescending != null) query = query.OrderByDescending(spec.OrderByDescending);
