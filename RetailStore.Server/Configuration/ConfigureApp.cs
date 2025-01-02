@@ -20,6 +20,11 @@ public static class ConfigureApp
         app.UseStatusCodePagesWithReExecute("/errors/{0}");
         app.UseHttpsRedirection();
         app.UseRouting();
+        app.UseCors(x => 
+            x.AllowAnyMethod()
+            .AllowAnyHeader()
+            .SetIsOriginAllowed(origin => true)
+            .AllowCredentials());
         app.UseStaticFiles();
         app.UseAuthorization();
         app.MapControllers();

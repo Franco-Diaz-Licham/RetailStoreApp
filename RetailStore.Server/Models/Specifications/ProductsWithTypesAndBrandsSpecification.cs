@@ -2,6 +2,10 @@ namespace RetailStore.Server.Models.Specifications;
 
 public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<ProductEntity>
 {
+    /// <summary>
+    /// Specification which gets all items that comply with the speficiation but returns the number of items according to paging.
+    /// </summary>
+    /// <param name="productParams"></param>
     public ProductsWithTypesAndBrandsSpecification(ProductSpecificationParams productParams) : base(x =>
         (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
         (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
