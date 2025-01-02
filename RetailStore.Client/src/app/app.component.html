@@ -1,4 +1,9 @@
-<div class="container mt-5">
+
+<div class="container-xxxl">
+    <app-nav-bar></app-nav-bar>
+    @for (p of products; track $index){
+        <span>{{p.name}}</span> <br/>
+    }
     <router-outlet />
 </div>
 
