@@ -17,7 +17,7 @@ export class ProductService implements OnInit {
     }
 
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+     
     }
 
     getProducts() : Observable<paginationModel> {

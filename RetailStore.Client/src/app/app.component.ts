@@ -5,11 +5,13 @@ import { productModel } from './models/productModel';
 import { ProductService } from './services/product.service';
 import { map, pipe } from 'rxjs';
 import { paginationModel } from './models/paginationModel';
+import { ShopMainComponent } from './components/shop/shop-main/shop-main.component';
+
 
 @Component({
     selector: 'app-root',
     standalone: true,
-    imports: [RouterOutlet, NavBarComponent],
+    imports: [RouterOutlet, NavBarComponent, ShopMainComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

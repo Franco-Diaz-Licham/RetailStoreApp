@@ -31,5 +31,6 @@ button {
     text-align: center;
     border-radius: 50%;
     background-color: blueviolet;
-    color: black;
+    color: white;
+    font-weight: bold;
 }

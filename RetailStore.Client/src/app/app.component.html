@@ -1,9 +1,7 @@
 
 <div class="container-xxxl">
     <app-nav-bar></app-nav-bar>
-    @for (p of products; track $index){
-        <span>{{p.name}}</span> <br/>
-    }
+    <app-shop-main></app-shop-main>
     <router-outlet />
 </div>
 
