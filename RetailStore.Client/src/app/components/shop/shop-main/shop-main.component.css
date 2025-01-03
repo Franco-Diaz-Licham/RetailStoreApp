@@ -13,3 +13,7 @@ select option {
     margin-left: 1rem;
     margin-top: 1rem;
 }
+
+.filters:hover{
+    cursor: pointer !important;
+}

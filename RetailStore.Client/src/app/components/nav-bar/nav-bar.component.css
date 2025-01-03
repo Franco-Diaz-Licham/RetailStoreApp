@@ -3,6 +3,10 @@ nav {
     position: sticky;
 }
 
+nav a {
+    color: black;
+}
+
 i {
     font-size: 2.4rem;
     color: black;
@@ -34,3 +38,4 @@ button {
     color: white;
     font-weight: bold;
 }
+

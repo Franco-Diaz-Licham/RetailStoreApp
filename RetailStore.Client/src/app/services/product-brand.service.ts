@@ -20,7 +20,7 @@ export class ProductBrandService {
      
     }
 
-    getProducts() : Observable<productBrandModel[]> {
+    getProductBrands() : Observable<productBrandModel[]> {
         return this.http.get<productBrandModel[]>(this.baseUrl);
     }
 }

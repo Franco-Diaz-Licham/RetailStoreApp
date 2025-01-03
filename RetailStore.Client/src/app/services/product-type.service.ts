@@ -19,7 +19,7 @@ export class ProductTypeService {
      
     }
 
-    getProducts() : Observable<productTypeModel[]> {
+    getProductTypes() : Observable<productTypeModel[]> {
         return this.http.get<productTypeModel[]>(this.baseUrl);
     }
 }
