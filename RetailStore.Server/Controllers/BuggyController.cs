@@ -9,10 +9,10 @@ public class BuggyController : BaseApiController
     }
 
     [HttpGet("test-auth")]
-    [Authorize]
+    // [Authorize]
     public ActionResult<string> GetSecretText()
     {
-        return "secret stuff";
+        return Unauthorized("Not allowed");
     }
 
     [HttpGet("not-found")]

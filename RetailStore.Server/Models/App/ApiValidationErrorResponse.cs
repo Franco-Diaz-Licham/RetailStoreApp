@@ -4,8 +4,8 @@ public class ApiValidationErrorResponse : ApiResponse
 {
     public ApiValidationErrorResponse(IEnumerable<string> errors) : base(400)
     {
-        Errors = errors;
+        ValidationErrors = errors;
     }
 
-    public IEnumerable<string> Errors { get; set; }
+    public IEnumerable<string> ValidationErrors { get; set; }
 }
