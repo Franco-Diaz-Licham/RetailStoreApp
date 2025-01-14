@@ -5,6 +5,7 @@ public static class AppServices
     public static IServiceCollection AddAppServices(this IServiceCollection services)
     {
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IBasketRepository, BasketRepository>();
 
         return services;
     }

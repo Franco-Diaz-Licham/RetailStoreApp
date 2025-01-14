@@ -26,5 +26,7 @@ global using System.Net;
 global using RetailStore.Server.Middleware;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.OpenApi.Models;
+global using StackExchange.Redis;
+global using RetailStore.Server.Data.Redis;
 
 

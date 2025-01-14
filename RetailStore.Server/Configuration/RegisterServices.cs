@@ -4,14 +4,23 @@ public static class RegisterServices
 {
     public static void AddServices(this IServiceCollection services, IConfiguration config)
     {
+        // basic services
         services.AddAppServices();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
+
+        // swagger
         services.AddSwaggerGen(opt =>
         {
             opt.SwaggerDoc("v1", new OpenApiInfo{ Title = "Retail Store API v1"});
         });
         services.AddDbContext<DataContext>(opt => opt.UseSqlite(config.GetConnectionString("DefaultConnection")));
+
+        // redis
+        services.AddSingleton<IConnectionMultiplexer>(opt => {
+            var configure = ConfigurationOptions.Parse(config.GetConnectionString("Redis")!, true);
+            return ConnectionMultiplexer.Connect(configure);
+        });
 
         // add data
         services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
