@@ -8,12 +8,13 @@ import { ServerErrorComponent } from './components/errors/server-error/server-er
 import { TestErrorsComponent } from './components/errors/test-errors/test-errors.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'shop', component: ShopMainComponent },
-    { path: 'shop/:id', component: ProductDetailsComponent, resolve: { product: ProductDetailsResolver } },
-    
-    { path: 'not-found', component: NotFoundComponent },
-    { path: 'server-error', component: ServerErrorComponent },
-    { path: "errors", component: TestErrorsComponent },
-    { path: '**', component: NotFoundComponent, pathMatch: 'full' }
+    { path: '', component: HomeComponent, data: { breadcrumb: 'Home'} },
+    { path: 'shop', children: [
+        { path: '', pathMatch: 'full', component: ShopMainComponent, data: { breadcrumb: 'Shop'}},
+        { path: ':id', component: ProductDetailsComponent, resolve: { product: ProductDetailsResolver }, data: { breadcrumb: { alias: 'productDetails'} } }
+    ]},    
+    { path: 'not-found', component: NotFoundComponent , data: { breadcrumb: 'Not Found'} },
+    { path: 'server-error', component: ServerErrorComponent, data: { breadcrumb: 'Server Error'}  },
+    { path: "errors", component: TestErrorsComponent , data: { breadcrumb: 'Test Error'} },
+    { path: '**', component: NotFoundComponent, pathMatch: 'full', data: { breadcrumb: 'Not Found'}  }
 ]

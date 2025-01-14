@@ -2,6 +2,21 @@ html{
     font-size: 16px;
 }
 
+.xng-breadcrumb-root {
+    padding: 8px 16px;
+    display: inline;
+    border-radius: 0;
+}
+
+label.xng-breadcrumb-trail {
+    margin-bottom: 0;
+    color: orange;
+}
+
+.xng-breadcrumb-separator {
+    padding: 0;
+}
+
 @media screen and (max-width: 600px) {
     html {
         font-size: 13px;
