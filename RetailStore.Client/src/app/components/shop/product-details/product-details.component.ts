@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { productModel } from '../../../models/productModel';
 import { CurrencyPipe } from '@angular/common';
 import { BreadcrumbService } from 'xng-breadcrumb';
+import { BasketService } from '../../../services/basket.service';
 
 @Component({
   selector: 'app-product-details',
@@ -15,8 +16,9 @@ import { BreadcrumbService } from 'xng-breadcrumb';
 export class ProductDetailsComponent implements OnInit {
 
     product?: productModel;
+    quantity = 1;
 
-    constructor(private route: ActivatedRoute, private breadCrumbService: BreadcrumbService){
+    constructor(private route: ActivatedRoute, private breadCrumbService: BreadcrumbService, private basketService: BasketService){
         this.breadCrumbService.set('@productDetails', ' ');
     }
 
@@ -25,5 +27,19 @@ export class ProductDetailsComponent implements OnInit {
             this.product = data['product'];
             this.breadCrumbService.set('@productDetails', this.product?.name!);
         });
+    }
+
+    addItemToBasket(){
+        this.basketService.addItemToBasket(this.product!, this.quantity);
+    }
+
+    incrementQuantity(){
+        this.quantity++;
+    }
+
+    decrementQuantity(){
+        if(this.quantity > 1){
+            this.quantity--;
+        }
     }
 }

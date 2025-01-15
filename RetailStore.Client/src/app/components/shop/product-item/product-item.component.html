@@ -2,7 +2,7 @@
     <div class="product">
         <img src="{{product?.pictureUrl}}" alt="{{product?.name}}" class="img-fluid">
         <div class="btn-group mt-1 w-100 hover-overlay px-2" >
-            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-cart"></i> Add</button>
+            <button type="button" class="btn btn-sm btn-primary" (click)="addItemtoBasket()"><i class="bi bi-cart"></i> Add</button>
             <button type="button" class="btn btn-sm btn-primary" (click)="navigateToProduct()"><i class="bi bi-eye"></i> View</button>
         </div>
     </div>

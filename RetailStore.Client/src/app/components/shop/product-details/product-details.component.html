@@ -8,10 +8,10 @@
             <h3>{{product.name}}</h3>
             <p>{{product.price | currency }}</p>
             <div>
-                <i class="bi bi-dash-circle-fill text-warning"></i>
-                <span class="fw-bold amount mx-3">2</span>
-                <i class="bi bi-plus-circle-fill text-warning"></i>
-                <button class="btn btn-outline-secondary btn-lg ms-4">Add to chart</button>
+                <i class="bi bi-dash-circle-fill text-warning" (click)="decrementQuantity()"></i>
+                <span class="fw-bold amount mx-3">{{quantity}}</span>
+                <i class="bi bi-plus-circle-fill text-warning" (click)="incrementQuantity()"></i>
+                <button class="btn btn-outline-secondary btn-lg ms-4" (click)="addItemToBasket()">Add to chart</button>
             </div>
         </div>
         <div class="row mt-5">
