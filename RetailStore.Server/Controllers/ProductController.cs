@@ -1,5 +1,6 @@
 namespace RetailStore.Server.Controllers;
 
+
 public class ProductController : BaseApiController
 {
     private readonly IGenericRepository<ProductEntity> _repo;

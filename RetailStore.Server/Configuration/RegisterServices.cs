@@ -9,12 +9,8 @@ public static class RegisterServices
         services.AddControllers();
         services.AddEndpointsApiExplorer();
         services.AddIdentityServices(config);
-        
-        // swagger
-        services.AddSwaggerGen(opt =>
-        {
-            opt.SwaggerDoc("v1", new OpenApiInfo{ Title = "Retail Store API v1"});
-        });
+        services.AddSwaggerService();
+        services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
         services.AddDbContext<DataContext>(opt => opt.UseSqlite(config.GetConnectionString("DefaultConnection")));
 
         // redis
@@ -22,9 +18,6 @@ public static class RegisterServices
             var configure = ConfigurationOptions.Parse(config.GetConnectionString("Redis")!, true);
             return ConnectionMultiplexer.Connect(configure);
         });
-
-        // add data
-        services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
         // model validation api response.
         services.Configure<ApiBehaviorOptions>(opt =>

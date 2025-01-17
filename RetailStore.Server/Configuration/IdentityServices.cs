@@ -27,6 +27,7 @@ public static class IdentityServices
         });
 
         services.AddAuthorization();
+        
         return services;
     }
 }

@@ -38,7 +38,7 @@ global using Microsoft.IdentityModel.Tokens;
 global using RetailStore.Server.Services;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
+global using System.ComponentModel;
 
 
 
