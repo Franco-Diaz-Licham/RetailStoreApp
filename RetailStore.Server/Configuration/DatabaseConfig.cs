@@ -10,6 +10,7 @@ public static class DatabaseConfig
         try
         {
             var db = services.GetRequiredService<DataContext>();
+            var manager = services.GetRequiredService<UserManager<UserEntity>>();
             await db.Database.MigrateAsync();
 
             // seed data
@@ -17,6 +18,7 @@ public static class DatabaseConfig
             await Seed.DeliveryMethods(db);
             await Seed.ProductTypes(db);
             await Seed.Products(db);
+            await Seed.SeedUsersAsync(manager);
         }
         catch (Exception ex)
         {

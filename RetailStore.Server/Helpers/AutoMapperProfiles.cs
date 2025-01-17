@@ -10,5 +10,6 @@ public class AutoMapperProfiles : Profile
             .ForMember(dest => dest.PictureUrl, opt => opt.MapFrom<ProductUrlResolver>());
         CreateMap<CustomerBasketDto, CustomerBasketModel>();
         CreateMap<BasketItemDto, BasketItemModel>();
+        CreateMap<AddressEntity, AddressDto>().ReverseMap();
     }
 }

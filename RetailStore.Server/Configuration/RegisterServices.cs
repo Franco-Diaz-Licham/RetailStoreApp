@@ -8,7 +8,8 @@ public static class RegisterServices
         services.AddAppServices();
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-
+        services.AddIdentityServices(config);
+        
         // swagger
         services.AddSwaggerGen(opt =>
         {

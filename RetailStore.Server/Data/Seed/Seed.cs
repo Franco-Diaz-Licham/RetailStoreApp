@@ -7,6 +7,7 @@ public class Seed
     private const string PRODUCT_BRANDS = BASE_PATH + "ProductBrandsData.json";
     private const string DELIVERY_METHODS = BASE_PATH + "DeliveryMethodsData.json";
     private const string PRODUCT_TYPES = BASE_PATH + "ProductTypesData.json";
+    private const string USERS = BASE_PATH + "UsersData.json";
 
     public static async Task Products(DataContext db)
     {
@@ -58,5 +59,17 @@ public class Seed
 
         await db.ProductTypes.AddRangeAsync(models);
         await db.SaveChangesAsync();
+    }
+
+    public static async Task SeedUsersAsync(UserManager<UserEntity> manager)
+    {    
+        if (await manager.Users.AnyAsync()) return;
+
+        var data = await File.ReadAllTextAsync(USERS);
+        var models = JsonSerializer.Deserialize<List<UserEntity>>(data);
+
+        if (models == null) return;
+
+        foreach(var m in models) await manager.CreateAsync(m, "Pa$$w0rd");
     }
 }

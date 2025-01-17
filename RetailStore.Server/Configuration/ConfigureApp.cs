@@ -26,6 +26,7 @@ public static class ConfigureApp
             .SetIsOriginAllowed(origin => true)
             .AllowCredentials());
         app.UseStaticFiles();
+        app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
         await app.ConfigureDatabase();

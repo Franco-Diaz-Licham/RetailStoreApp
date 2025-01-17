@@ -9,6 +9,6 @@ public class AddressEntity
     public string City { get; set; }
     public string State { get; set; }
     public string Zipcode { get; set; }
-    public string AppUserId { get; set; }
-    public UserEntity AppUser { get; set; }
+    public string UserEntityId { get; set; }
+    public UserEntity UserEntity { get; set; }
 }

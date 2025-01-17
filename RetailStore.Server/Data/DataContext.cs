@@ -1,6 +1,6 @@
 namespace RetailStore.Server.Data;
 
-public class DataContext : DbContext
+public class DataContext : IdentityDbContext<UserEntity>
 {
     private const string SQLITE_DB_NAME = "Microsoft.EntityFrameworkCore.Sqlite";
     
