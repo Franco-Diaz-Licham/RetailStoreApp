@@ -5,6 +5,7 @@ import { ShopMainComponent } from './components/shop/shop-main/shop-main.compone
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SectionHeaderComponent } from "./components/layout/section-header/section-header.component";
 import { BasketService } from './services/basket.service';
+import { AccountService } from './services/account.service';
 
 
 @Component({
@@ -15,15 +16,28 @@ import { BasketService } from './services/basket.service';
     styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-    constructor(private basketService: BasketService) {
+    constructor(private basketService: BasketService, private accountService: AccountService) {
 
     }
 
     ngOnInit(): void {
+        this.loadBasket();
+        this.loadUser();
+    }
+
+    loadBasket(){
         const basketId = localStorage.getItem('basket_id');
 
         if(basketId){
-            this.basketService.getBasket(basketId).subscribe(() => console.log('initiliased'));
+            this.basketService.getBasket(basketId).subscribe();
+        }
+    }
+
+    loadUser(){
+        const token = localStorage.getItem('token');
+
+        if(token){
+            this.accountService.loadCurrentUser(token).subscribe();
         }
     }
 }
