@@ -10,11 +10,8 @@ public class ProductUrlResolver : IValueResolver<ProductEntity, ProductDto, stri
 
     public string? Resolve(ProductEntity source, ProductDto destination, string? destMember, ResolutionContext context)
     {
-        if (!string.IsNullOrEmpty(source.PictureUrl))
-        {
-            var url = _config.GetValue<string>("ApiUrl");
-            return url + source.PictureUrl;
-        }
+        if (!string.IsNullOrEmpty(source.PictureUrl)) return _config.GetValue<string>("ApiUrl") + source.PictureUrl;
         return null;
     }
 }
+ 

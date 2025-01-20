@@ -1,5 +1,9 @@
 namespace RetailStore.Server.Models.Specifications;
 
+/// <summary>
+/// Class which to builds an IQueryable used in entity framework based on passed criteria.
+/// </summary>
+/// <typeparam name="TEntity"></typeparam>
 public class SpecificationEvaluator<TEntity> where TEntity : BaseEntity
 {
     public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery, ISpecification<TEntity> spec)
@@ -12,6 +16,7 @@ public class SpecificationEvaluator<TEntity> where TEntity : BaseEntity
         if (spec.OrderByDescending != null) query = query.OrderByDescending(spec.OrderByDescending);
         if (spec.IsPagingEnabled) query = query.Skip(spec.Skip).Take(spec.Take);
 
+        // loop through all include citeria returning the built query before adding the next include
         query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
         
         return query;

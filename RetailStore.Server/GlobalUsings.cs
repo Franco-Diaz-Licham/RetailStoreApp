@@ -39,7 +39,9 @@ global using RetailStore.Server.Services;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using System.ComponentModel;
-
-
-
+global using System.Collections;
+global using Stripe;
+global using TokenService = RetailStore.Server.Services.TokenService;
+global using File = System.IO.File;
+global using RetailStore.Server.Models.Entities.OwnedEntities;
 

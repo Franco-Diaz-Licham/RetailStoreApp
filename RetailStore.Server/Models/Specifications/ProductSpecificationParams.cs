@@ -1,5 +1,8 @@
 namespace RetailStore.Server.Models.Specifications;
 
+/// <summary>
+/// Class which defines product based queryable parameters used for entity framework.
+/// </summary>
 public class ProductSpecificationParams
 {
     private const int MAX_PAGE_SIZE = 50;

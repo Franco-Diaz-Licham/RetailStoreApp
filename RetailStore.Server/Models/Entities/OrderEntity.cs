@@ -1,13 +1,13 @@
 namespace RetailStore.Server.Models.Entities;
 
-public class Order : BaseEntity
+public class OrderEntity : BaseEntity
 {
-    public Order(){ }
+    public OrderEntity(){ }
     
-    public Order(
+    public OrderEntity(
         IReadOnlyList<OrderItemEntity> orderItems, 
         string buyerEmail, 
-        AddressEntity shipToAddress,
+        AddressOwnedEntity shipToAddress,
         DeliveryMethodEntity deliveryMethod, 
         decimal subtotal, 
         string paymentIntentId)
@@ -22,7 +22,7 @@ public class Order : BaseEntity
 
     public string BuyerEmail { get; set; }
     public DateTime OrderDate { get; set; } = DateTime.UtcNow;
-    public AddressEntity ShipToAddress { get; set; }
+    public AddressOwnedEntity ShipToAddress { get; set; }
     public DeliveryMethodEntity DeliveryMethod { get; set; }
     public IReadOnlyList<OrderItemEntity> OrderItems { get; set; }
     public decimal Subtotal { get; set; }

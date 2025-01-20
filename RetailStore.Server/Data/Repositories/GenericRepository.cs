@@ -11,31 +11,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _db = db;
     }
 
-    public void Add(T entity)
-    {
-        _db.Set<T>().Add(entity);
-    }
-
-    public async Task<int> CountAsync(ISpecification<T> spec)
-    {
-        var output = await ApplySpecification(spec).CountAsync();
-        return output;
-    }
-
-    public void Delete(T entity)
-    {
-        _db.Set<T>().Remove(entity);
-    }
-
     public async Task<T?> GetByIdAsync(int id)
     {
         var output = await _db.Set<T>().FindAsync(id);
-        return output;
-    }
-
-    public async Task<T?> GetEntityWithSpec(ISpecification<T> spec)
-    {
-        var output = await ApplySpecification(spec).FirstOrDefaultAsync();
         return output;
     }
 
@@ -45,10 +23,30 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         return output;
     }
 
+    public async Task<T?> GetEntityWithSpec(ISpecification<T> spec)
+    {
+        var query = ApplySpecification(spec);
+        var output = await query.FirstOrDefaultAsync();
+        return output;
+    }
+
     public async Task<IReadOnlyList<T>> GetAllAsync(ISpecification<T> spec)
     {
-        var output = await ApplySpecification(spec).ToListAsync();
+        var query = ApplySpecification(spec);
+        var output = await query.ToListAsync();
         return output;
+    }
+
+    public async Task<int> CountAsync(ISpecification<T> spec)
+    {
+        var query = ApplySpecification(spec);
+        var output = await query.CountAsync();
+        return output;
+    }
+
+    public void Add(T entity)
+    {
+        _db.Set<T>().Add(entity);
     }
 
     public void Update(T entity)
@@ -57,9 +55,20 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _db.Entry(entity).State = EntityState.Modified;
     }
 
+    public void Delete(T entity)
+    {
+        _db.Set<T>().Remove(entity);
+    }
+
+    /// <summary>
+    /// Method which builds an IQueryable to execute in the GET methods in this repository.
+    /// </summary>
+    /// <param name="spec"></param>
+    /// <returns></returns>
     private IQueryable<T> ApplySpecification(ISpecification<T> spec)
     {
-        var output = SpecificationEvaluator<T>.GetQuery(_db.Set<T>().AsQueryable(), spec);
+        var query = _db.Set<T>().AsQueryable();
+        var output = SpecificationEvaluator<T>.GetQuery(query, spec);
         return output;
     }
 }
