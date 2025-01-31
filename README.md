@@ -14,13 +14,14 @@ Retail Store App is a simple e-commerce application developed using Angular 18 a
   * **Entity Framework:** Simplifies database operations and interactions.
   * **Jwt Bearer Authentication:** Ensures secure, authenticated and authorized communication.
   * **SQLite:** A temporary database solution for efficient data storage.
+  * **Redis:** Document-based (NoSQL) database used to cache basket information for a user.
 
 * **Frontend**:
   * **Angular 18:** A powerful frontend framework for building dynamic and responsive web applications.
   * **Bootstrap 5:** The world's most popular front-end open-source toolkit for designing and customizing responsive and mobile-first sites.
 
 * **Cloud Provider**:
-  * **Stripe:** A cloud-based paymet service that provides comprehensive solutions for managing online payments.
+  * **Stripe:** A cloud-based payment service that provides comprehensive solutions for managing online payments securely.
 
 # Overview
 The website has both public pages and some that are hidden behind a login. The pages are as follows:
