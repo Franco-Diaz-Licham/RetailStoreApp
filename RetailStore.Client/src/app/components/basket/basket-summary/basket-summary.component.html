@@ -1,0 +1,48 @@
+@if((basketService.basket$ | async); as basket)
+{
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="text-uppercase">
+                <tr>
+                    <th>
+                        <div class="py-2">Product</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Price</div>
+                    </th>
+                    <th class="text-center">
+                        <div class="py-2">Quantity</div>
+                    </th>
+                    <th>
+                        <div class="py-2">Total</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of basket.items; track $index)
+                {
+                    <tr>
+                        <th scope="row">
+                            <div class="p-2">
+                                <img src="{{item.pictureUrl}}" alt="{{item.productName}}"  class="img-fluid" style="max-height: 50px;" >
+                                <div class="ms-3 d-inline-block align-middle">
+                                    <h5 class="mb-0">
+                                        <a routerLink="/shop/{{item.id}}" class="text-dark text-decoration-none">{{item.productName}}</a>
+                                    </h5>
+                                    <span class="text-muted fst-italic"> Type: {{item.type}}</span>
+                                </div>
+                            </div>
+                        </th>
+                        <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
+                        <td class="align-middle">
+                            <div class="d-flex align-items-center justify-content-center" >
+                                <strong style="font-size: 1.2em;">{{item.quantity}}</strong>
+                            </div>
+                        </td>
+                        <td class="align-middle"><strong>{{item.price * item.quantity | currency}}</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

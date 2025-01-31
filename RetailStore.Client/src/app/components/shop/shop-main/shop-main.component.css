@@ -1,0 +1,19 @@
+input {
+    border: 1px solid darkgray !important;
+}
+
+.custom-select{
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.4rem;
+}
+
+select option {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.filters:hover{
+    cursor: pointer !important;
+}

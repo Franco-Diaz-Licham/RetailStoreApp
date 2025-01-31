@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div><i class="bi bi-check-circle" style="color: green;"></i></div>
+        </div>
+        <div class="col-auto">
+            <h2>Thank you. Your order is confirmed</h2>
+            <p class="mb-4">Your order, your order will be shipped soon and you will be notified...</p>
+            @if(order)
+            {
+            <button routerLink="/orders/{{order!.id}}" class="btn btn-outline-success">
+                View your order
+            </button>
+            }
+            @else
+            {
+            <button routerLink="/orders" class="btn btn-outline-success">
+                View your orders
+            </button>
+            }
+        </div>
+    </div>
+</div>

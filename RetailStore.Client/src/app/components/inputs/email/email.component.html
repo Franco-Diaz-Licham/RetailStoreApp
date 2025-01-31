@@ -1,0 +1,16 @@
+<div class="form-floating mb-3">
+    <input id="floatingInputEmail" type={{type}} [formControl]="control" placeholder="{{label}}" class="form-control" [ngClass]="{'is-valid': control.touched && control.valid, 'is-invalid': control.touched && control.invalid}" autocomplete="off">
+    <label for="floatingInputEmail">{{label}}</label>
+    @if(control.errors?.['required'])
+    {
+    <div class="invalid-feedback">Please enter an {{label.toLowerCase()}}...</div>
+    }
+    @if(control.errors?.['email'])
+    {
+    <div class="invalid-feedback">Not a valid {{label.toLowerCase()}}...</div>
+    }
+    @if(control.errors?.['emailExists'])
+    {
+    <div class="invalid-feedback">The {{label.toLowerCase()}} is taken...</div>
+    }
+</div>

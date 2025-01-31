@@ -1,0 +1,23 @@
+@if(product){
+    <div class="row">
+        <div class="col-6">
+            <img src="{{product.pictureUrl}}" alt="{{product.description}}" class="img-fluid">
+        </div>
+        <div class="col-6">
+            <h3>{{product.name}}</h3>
+            <p>{{product.price | currency }}</p>
+            <div>
+                <i class="bi bi-dash-circle-fill text-warning" (click)="decrementQuantity()"></i>
+                <span class="fw-bold amount mx-3">{{quantity}}</span>
+                <i class="bi bi-plus-circle-fill text-warning" (click)="incrementQuantity()"></i>
+                <button class="btn btn-outline-secondary btn-lg ms-4" (click)="addItemToBasket()">Add to chart</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 ms-3">
+                <h4>Description</h4>
+                <p>{{product.description}}</p>
+            </div>
+        </div>
+    </div>
+}

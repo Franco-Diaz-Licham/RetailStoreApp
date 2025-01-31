@@ -1,0 +1,31 @@
+
+h6:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.product {
+    position: relative;
+    overflow: hidden;
+}
+
+.product:hover{
+    cursor: pointer;
+}
+
+img:hover {
+    opacity: 0.5;
+}
+
+.hover-overlay {
+    position: absolute;
+    bottom: -20%;
+    left: 0;
+}
+
+.product:hover .hover-overlay{
+    position: absolute;
+    bottom: 50%;
+    left: 0;
+    transition: all 0.1s ease-in-out;
+}

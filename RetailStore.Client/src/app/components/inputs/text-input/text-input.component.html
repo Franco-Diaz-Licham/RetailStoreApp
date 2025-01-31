@@ -1,0 +1,16 @@
+<div class="form-floating mb-3">
+    <input id="{{id}}" type={{type}} [formControl]="control" placeholder="{{label}}" class="form-control" [ngClass]="{'is-valid': control.touched && control.valid, 'is-invalid': control.touched && control.invalid}" autocomplete="off">
+    <label for="floatingInputEmail">{{label}}</label>
+    @if(control.errors?.['required'])
+    {
+    <div class="invalid-feedback">The {{label.toLowerCase()}} field is required...</div>
+    }
+    @if(control.errors?.['minlength'])
+    {
+    <div class="invalid-feedback">The {{label.toLowerCase()}} field must be at least...</div>
+    }
+    @if(control.errors?.['maxlength'])
+    {
+    <div class="invalid-feedback">The {{label.toLowerCase()}} must be no more than {{control.errors?.['maxlength'].value}}...</div>
+    }
+</div>

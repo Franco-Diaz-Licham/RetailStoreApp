@@ -1,0 +1,28 @@
+[
+  {
+    "DisplayName": "Bob",
+    "Email": "bob@test.com",
+    "UserName": "bob@test.com",
+    "Address" : {
+        "FirstName" : "Bob",
+        "LastName" : "Bobbity",
+        "Street" : "10 The Street",
+        "City" : "Testing",
+        "State" : "Test",
+        "Zipcode": "1022"
+    }
+  },
+  {
+    "DisplayName": "Frank",
+    "Email": "frank@test.com",
+    "UserName": "frank@test.com",
+    "Address" : {
+        "FirstName" : "Frank",
+        "LastName" : "Frankie",
+        "Street" : "12 The Avenue",
+        "City" : "Test",
+        "State" : "Testing",
+        "Zipcode": "00245"
+    }
+  }
+]

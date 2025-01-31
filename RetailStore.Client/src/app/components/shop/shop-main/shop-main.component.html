@@ -1,0 +1,75 @@
+<div class="row">
+    <!-- filters -->
+    <section class="col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-2 mb-4">
+        <h5>Sort</h5>
+        <select name="sortFilter" [value]="productParams.sort" id="" class="custom-select filters shadow-sm" [(ngModel)]="productParams.sort">
+            @for (opt of sortOptions; track $index) 
+            {
+                <option [value]="opt.value">{{opt.name}}</option>
+            }
+        </select>
+
+        <!-- brands -->
+        <h5 class="mt-4">Brands</h5>
+        <ul class="list-group shadow-sm">
+            @for (b of productBrands; track $index) 
+            {
+                <a [class.active]="b.id === productParams.brandId" class="list-group-item list-group-item-action filters" (click)="handleProductBrandChanged(b)">{{b.name}}</a>
+            }
+        </ul>
+
+        <!-- types -->
+        <h5 class="mt-4">Types</h5>
+        <ul class="list-group shadow-sm">
+            @for (t of productTypes; track $index) 
+            {
+                <a [class.active]="t.id === productParams.typeId" class="list-group-item list-group-item-action filters" (click)="handleProductTypeChanged(t)">{{t.name}}</a>
+            }
+        </ul>
+        <div class="btn-group mt-4 w-100 shadow-sm">
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="handleApplyFilterChanged()"><i class="bi bi-filter"></i>Apply</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" (click)="handleClearFilterChanged()"><i class="bi bi-x-lg"></i>Clear</button>
+        </div>
+    </section>
+
+    <!-- main content -->
+    <section class="col-sm-12 col-md-12 col-lg-9 col-xl-9 col-xxl-10 col">
+
+        <!-- search -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <small>Showing <strong>{{getItemsShowing()}}</strong> of <strong>{{totalCount}}</strong></small>
+            <div class="row align-items-center">
+                <div class="col-auto p-0">
+                    <input type="text" id="inputPassword6" class="form-control shadow-sm" aria-describedby="passwordHelpInline" [(ngModel)]="productParams.search" (keyup.enter)="handleSearch()" placeholder="Search items">
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-outline-secondary shadow-sm me-2" (click)="handleSearch()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary shadow-sm" (click)="clearSearch()">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- items -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-4 g-3">
+            @for (p of products; track $index) 
+            {
+                <div class="col">
+                    <app-product-item [product]="p"></app-product-item>
+                </div>
+            }
+        </div>
+
+        @if(products.length > 0) 
+        {
+            <div class="d-flex justify-content-center mt-4">
+                <pagination [boundaryLinks]="true" [totalItems]="totalCount" [itemsPerPage]="productParams.pageSize"
+                    [ngModel]="productParams.pageIndex" (pageChanged)="handlePageChanged($event)" previousText="&lsaquo;"
+                    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" />
+            </div>
+        }
+    </section>
+</div>

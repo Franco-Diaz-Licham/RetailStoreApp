@@ -1,0 +1,87 @@
+@if((basket$ | async) === null)
+{
+    <div>
+        <p>There are not items in basket</p>
+    </div>
+}
+@else 
+{
+    @if((basket$ | async); as basket)
+    {
+        <div class="pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 py-5 mb-1">
+                        <div class="table-responsive">
+                            <table class="table">
+    
+                                <!-- Header -->
+                                <thead>
+                                    <tr>
+                                        <th class="border-0 bg-light" scope="col">
+                                            <div class="p-2 px-3 text-upperscase text-center">Product</div>
+                                        </th>
+                                        <th class="border-0 bg-light" scope="col">
+                                            <div class="py-2 text-uppercase text-center">Price</div>
+                                        </th>
+                                        <th class="border-0 bg-light" scope="col">
+                                            <div class="py-2 text-uppercase text-center">Quantity</div>
+                                        </th>
+                                        <th class="border-0 bg-light" scope="col">
+                                            <div class="py-2 text-uppercase text-center">Total</div>
+                                        </th>
+                                        <th class="border-0 bg-light" scope="col">
+                                            <div class="py-2 text-uppercase text-center">Remove</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+    
+                                <!-- body -->
+                                <tbody>
+                                    @for (item of basket.items; track $index) 
+                                    {
+                                        <tr>
+                                            <th scope="row">
+                                                <div class="p-2">
+                                                    <img src="{{item.pictureUrl}}" alt="" class="img-fluid me-5">
+                                                    <div class="ml-3 d-inline-block align-middle">
+                                                        <h5 class="mb-0">
+                                                            <a routerLink="/shop/{{item.id}}" class="text-dark">{{item.productName}}</a>
+                                                        </h5>
+                                                        <span class="text-muted font-weight-normal font-italic d-block">Type: {{item.type}}</span>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td class="align-middle fw-bold text-center">{{item.price}}</td>
+                                            <td class="align-middle fw-bold text-center">
+                                                <div class="text-center d-flex align-items-center">
+                                                    <i class="bi bi-dash-circle-fill text-warning fs-2" (click)="decrementItemQuantity(item)"></i>
+                                                    <span class="fw-bold amount mx-3">{{item.quantity}}</span>
+                                                    <i class="bi bi-plus-circle-fill text-warning fs-2" (click)="incrementItemQuantity(item)"></i>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle fw-bold text-center">{{item.price * item.quantity | currency}}</td>
+                                            <td class="align-middle text-center">
+                                                <a class="text-danger">
+                                                    <i class="bi bi-trash text-danger fs-2" (click)="removeBasketItem(item)"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 offset-6">
+                        <app-order-totals></app-order-totals>
+                        <a routerLink="/checkout" class="btn btn-outline-primary d-block">
+                            Proceed to Checkout
+                        </a>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    }
+}
