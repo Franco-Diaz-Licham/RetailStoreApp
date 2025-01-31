@@ -27,6 +27,6 @@ Retail Store App is a simple e-commerce application developed using Angular 18 a
 The website has both public pages and some that are hidden behind a login. The pages are as follows:
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d4eeb1e7-63b9-42d7-b533-df4f51560d74" />
+  <img src="https://github.com/user-attachments/assets/8113853d-0523-44b3-b926-006e9761c93b" />
 </p>
 
