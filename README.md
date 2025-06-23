@@ -1,5 +1,5 @@
 # Retail Store App Project
-Retail Store App is a simple e-commerce application developed using Angular 18 and .NET 8 Web API that replicates core features of a conventional online store, enabling users to register, place orders, and view their order history. While inspired by Neil Cummings' app development course, I designed and built this project independently, ensuring the final product reflects my own coding style, decisions, and problem-solving.
+Retail Store App is a simple e-commerce application developed using Angular 18 and .NET 8 Web API that replicates core features of a conventional online store, enabling users to register, place orders, and view their order history.
 
 # App Features
 * **User Authentication:** Secure registration and authentication process using Microsoft Identity.
